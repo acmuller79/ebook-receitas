@@ -1,0 +1,51 @@
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&family=Nunito:wght@400;600;700;800;900&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Nunito", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Oswald", ui-sans-serif, system-ui, sans-serif;
+  --color-brand-green: #527E34;
+  --color-brand-red: #CD3B32;
+  --color-brand-yellow: #ECA42A;
+  --color-brand-bg: #FDFBF7;
+
+  --animate-bounce-subtle: bounce-subtle 3s infinite ease-in-out;
+
+  @keyframes bounce-subtle {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-8px); }
+  }
+}
+
+.perspective-1000 {
+  perspective: 1000px;
+}
+
+body {
+  background-color: var(--color-brand-bg);
+  -webkit-font-smoothing: antialiased;
+}
+
+.brush-stroke {
+  position: relative;
+  display: inline-block;
+  padding: 0.2em 0.5em;
+  z-index: 1;
+}
+
+.brush-stroke::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: var(--color-brand-green);
+  z-index: -1;
+  transform: rotate(-1deg) skewX(-5deg);
+  border-radius: 4px;
+}
+
+.brush-stroke-red::before {
+  background: var(--color-brand-red);
+}
