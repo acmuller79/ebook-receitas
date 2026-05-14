@@ -39,6 +39,11 @@ export default function App() {
           href="https://pay.hotmart.com/K105829709J"
           target="_blank"
           rel="noopener noreferrer"
+          onClick={() => {
+            if (typeof window !== 'undefined' && (window as any).fbq) {
+              (window as any).fbq('track', 'InitiateCheckout');
+            }
+          }}
           className="w-full bg-brand-red text-white py-4 rounded-xl font-black shadow-lg shadow-brand-red/30 flex items-center justify-center gap-2 animate-bounce-subtle outline-none"
         >
            <span>¡CONSEGUIR MI PACK AHORA!</span>
@@ -617,6 +622,11 @@ export default function App() {
                 href="https://pay.hotmart.com/B105826536U"
                 target="_blank"
                 rel="noopener noreferrer"
+                onClick={() => {
+                  if (typeof window !== 'undefined' && (window as any).fbq) {
+                    (window as any).fbq('track', 'InitiateCheckout', { content_name: 'Solo Recetas' });
+                  }
+                }}
                 className="w-full bg-gray-800 hover:bg-black text-white py-4 rounded-xl font-black transition-all flex items-center justify-center gap-2"
               >
                 <span>COMPRAR RECETAS</span>
@@ -644,6 +654,11 @@ export default function App() {
                 href="https://pay.hotmart.com/K105829709J"
                 target="_blank"
                 rel="noopener noreferrer"
+                onClick={() => {
+                  if (typeof window !== 'undefined' && (window as any).fbq) {
+                    (window as any).fbq('track', 'InitiateCheckout', { content_name: 'Pack Completo' });
+                  }
+                }}
                 className="w-full bg-brand-red hover:bg-[#B32D25] text-white py-5 rounded-xl font-black shadow-lg transition-all flex items-center justify-center gap-2 group relative overflow-hidden"
               >
                 <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000"></div>
