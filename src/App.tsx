@@ -17,6 +17,7 @@ import {
   Sparkles,
   Flame,
   ShoppingBag,
+  Calendar,
   Zap,
   Users,
   Gift,
@@ -34,10 +35,15 @@ export default function App() {
       
       {/* STICKY CTA (Mobile only) */}
       <div className="fixed bottom-0 left-0 w-full p-4 bg-white/80 backdrop-blur-md border-t border-gray-100 z-[100] md:hidden">
-        <button className="w-full bg-brand-red text-white py-4 rounded-xl font-black shadow-lg shadow-brand-red/30 flex items-center justify-center gap-2 animate-bounce-subtle">
+        <a 
+          href="https://pay.hotmart.com/K105829709J"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="w-full bg-brand-red text-white py-4 rounded-xl font-black shadow-lg shadow-brand-red/30 flex items-center justify-center gap-2 animate-bounce-subtle outline-none"
+        >
            <span>¡CONSEGUIR MI PACK AHORA!</span>
            <ArrowRight className="w-5 h-5" />
-        </button>
+        </a>
       </div>
 
       {/* FLASH ANNOUNCEMENT */}
@@ -46,36 +52,67 @@ export default function App() {
       </div>
       
       {/* HEADER / HERO SECTION */}
-      <header className="max-w-5xl mx-auto px-4 pt-12 pb-8 md:pt-16 md:pb-12 text-center md:text-left flex flex-col md:flex-row items-center gap-8">
-        <div className="flex-1 space-y-4">
-          <h1 className="font-display font-bold leading-[1.1] flex flex-col">
-            <span className="text-brand-green text-5xl md:text-6xl tracking-tight">LUNES MOTIVADA.</span>
-            <span className="text-brand-yellow text-5xl md:text-6xl tracking-tight mt-1">MIÉRCOLES CANSADA.</span>
-            <span className="text-brand-red text-5xl md:text-6xl tracking-tight mt-1">DOMINGO... CULPABLE.</span>
+      <header className="max-w-5xl mx-auto px-4 pt-8 pb-8 md:pt-12 md:pb-12 text-center md:text-left flex flex-col md:flex-row items-center gap-12 relative">
+        <div className="flex-1 space-y-6 relative">
+          
+          {/* HIGH PROMINENCE RECIPE COUNTER */}
+          <div className="inline-flex items-center gap-3 bg-white border-2 border-brand-green/20 p-1 pr-4 rounded-full shadow-lg shadow-brand-green/5 mb-2 transform -rotate-1 hover:rotate-0 transition-transform">
+            <div className="bg-brand-green text-white font-black px-4 py-2 rounded-full text-xl animate-pulse">
+               +400
+            </div>
+            <span className="text-brand-green font-black text-sm uppercase tracking-widest">Recetas Exclusivas</span>
+          </div>
+
+          <h1 className="font-display font-bold leading-[1.1] flex flex-col relative z-10">
+            <span className="text-gray-400 text-sm uppercase tracking-[0.3em] font-medium mb-2">TRANSFORMA</span>
+            <span className="text-brand-green text-6xl md:text-8xl tracking-tighter">TU SALUD</span>
+            <span className="text-gray-400 text-lg font-script italic lowercase mt-2">con nuestras</span>
+            <span className="text-brand-yellow text-5xl md:text-7xl tracking-tight mt-1 leading-none">RECETAS</span>
+            <span className="bg-brand-green text-white px-4 py-2 rounded-lg text-4xl md:text-5xl mt-2 inline-block w-fit">ANTIINFLAMATORIAS</span>
           </h1>
           
-          <div className="mt-8 pt-4">
-            <span className="brush-stroke text-white font-extrabold text-xl md:text-2xl shadow-sm">
-              No es falta de fuerza de voluntad.
-            </span>
-          </div>
-          
-          <p className="text-2xl md:text-4xl font-bold mt-4 text-gray-800">
-            Es que estás <span className="underline decoration-brand-red decoration-4 opacity-90">improvisando</span><br />
-            cada día lo que comes.
+          <p className="text-xl md:text-2xl font-medium mt-8 text-gray-600 max-w-xl leading-relaxed">
+            Deliciosas, fáciles y llenas de nutrientes para <span className="text-brand-green font-bold">reducir la inflamación</span> y mejorar tu bienestar cada día.
           </p>
+          
+          <div className="flex flex-wrap gap-4 mt-8">
+            {[
+              { icon: <CheckCircle2 className="w-5 h-5 text-brand-green" />, text: "MENOS DOLOR Y RIGIDEZ" },
+              { icon: <CheckCircle2 className="w-5 h-5 text-brand-green" />, text: "MÁS ENERGÍA Y VITALIDAD" },
+              { icon: <CheckCircle2 className="w-5 h-5 text-brand-green" />, text: "PIEL MÁS SANA" }
+            ].map((item, i) => (
+              <div key={i} className="flex items-center gap-2 bg-white px-4 py-3 rounded-2xl shadow-sm border border-gray-100">
+                {item.icon}
+                <span className="text-xs font-black text-gray-700 tracking-tight uppercase">{item.text}</span>
+              </div>
+            ))}
+          </div>
         </div>
 
-        <div className="w-full md:w-2/5 mt-8 md:mt-0 relative">
-          <div className="aspect-square md:aspect-[4/5] rounded-3xl overflow-hidden shadow-2xl relative">
+        <div className="w-full md:w-2/5 mt-8 md:mt-0 relative group">
+          {/* FLOATING BADGE */}
+          <div className="absolute top-4 right-4 md:-top-10 md:-right-10 w-40 h-40 bg-brand-yellow rounded-full flex flex-col items-center justify-center text-white shadow-[0_20px_50px_rgba(236,164,42,0.4)] z-30 transform rotate-12 group-hover:rotate-0 transition-transform duration-500 border-8 border-white cursor-default">
+             <span className="text-sm font-black uppercase tracking-tighter opacity-80">MÁS DE</span>
+             <span className="text-5xl font-black">+400</span>
+             <span className="text-xs font-black uppercase tracking-widest mt-1">RECETAS</span>
+             <span className="text-[8px] font-black uppercase tracking-widest opacity-60">EXCLUSIVAS</span>
+          </div>
+          
+          <div className="aspect-[4/5] rounded-[4rem] overflow-hidden shadow-[0_32px_64px_-16px_rgba(0,0,0,0.3)] relative border-[12px] border-white ring-1 ring-gray-100">
             <img 
-              src="https://images.unsplash.com/photo-1512427691650-15fcce1dc7b1?auto=format&fit=crop&w=800&q=80" 
-              alt="Mujer frustrada con su alimentación"
-              className="object-cover w-full h-full opacity-90 transition-opacity duration-500"
+              src="https://images.unsplash.com/photo-1467003909585-2f8a72700288?auto=format&fit=crop&w=800&q=80" 
+              alt="Plato saludable de salmón y verduras antiinflamatorio"
+              className="object-cover w-full h-full transform group-hover:scale-110 transition-transform duration-1000"
               referrerPolicy="no-referrer"
               crossOrigin="anonymous"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div>
+            <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-60"></div>
+            
+            {/* BOTTOM OVERLAY INFO */}
+            <div className="absolute bottom-8 left-8 right-8 text-white">
+              <p className="text-[10px] font-black uppercase tracking-[0.2em] mb-1 opacity-80">Alimentación Funcional</p>
+              <h3 className="text-2xl font-black tracking-tight leading-none italic">COME BIEN, SIÉNTETE MEJOR, VIVE MÁS</h3>
+            </div>
           </div>
         </div>
       </header>
@@ -181,10 +218,11 @@ export default function App() {
             <div className="space-y-6">
               <ul className="space-y-5">
                 {[
-                  { text: "2 MESES de MENÚS", sub: "Planificados semana a semana", badge: "Ahorra Tiempo" },
-                  { text: "+400 RECETAS", sub: "100% Antiinflamatorias y deliciosas", badge: "Variedad Total" },
-                  { text: "LISTA DE LA COMPRA", sub: "Ahorra tiempo en el supermercado", badge: "Organización" },
-                  { text: "OPCIONES REALES", sub: "Ingredientes que ya tienes en casa", badge: "Sin Gastos Extra" }
+                  { text: "+400 RECETAS EXCLUSIVAS", sub: "Recetas diseñadas para desinflamar", badge: "+400 RECETAS" },
+                  { text: "PLAN DE 8 SEMANAS", sub: "Plan de menús completos (2 meses)", badge: "ORGANIZACIÓN" },
+                  { text: "MÁS ENERGÍA Y VITALIDAD", sub: "Siéntete ligera y activa cada día", badge: "BIENESTAR" },
+                  { text: "SISTEMA INMUNOLÓGICO", sub: "Más fuerte y protegido", badge: "PROTECCIÓN" },
+                  { text: "SALUD DIGESTIVA", sub: "Adiós a la pesadez abdominal", badge: "DIGESTIÓN" }
                 ].map((item, i) => (
                   <li key={i} className="flex items-start gap-4 group">
                     <div className="mt-1 transition-transform group-hover:scale-110">
@@ -205,8 +243,8 @@ export default function App() {
 
               <div className="bg-brand-green text-white p-6 rounded-2xl font-bold shadow-xl transform -rotate-1 text-center md:text-left mt-10 inline-block">
                 <p className="text-xl md:text-2xl leading-tight">
-                  <span className="opacity-80">Olvídate de la pregunta:</span><br/>
-                  <span className="text-3xl tracking-tighter">"¿Y hoy qué cocino?"</span>
+                  <span className="opacity-80 uppercase tracking-tighter text-sm">COME BIEN, SIÉNTETE MEJOR, VIVE MÁS</span><br/>
+                  <span className="text-3xl tracking-tighter">Resultados Reales.</span>
                 </p>
               </div>
             </div>
@@ -217,38 +255,20 @@ export default function App() {
               
               <div className="relative w-full max-w-[320px] aspect-[4/5] z-10 perspective-1000">
                 
-                {/* Book 1 - Recetas */}
-                <div className="absolute top-4 right-[-10%] w-[85%] h-[85%] bg-white rounded-r-lg shadow-[20px_20px_60px_rgba(0,0,0,0.15)] border-y border-r border-gray-100 flex flex-col items-center justify-start overflow-hidden transform rotate-6 hover:rotate-3 transition-all duration-500 origin-bottom-left group">
-                  <div className="absolute left-0 top-0 w-4 h-full bg-gradient-to-r from-gray-200 to-transparent opacity-50"></div>
-                  <div className="w-full text-center p-6 bg-brand-green/5 flex-1 flex flex-col justify-center">
-                    <p className="text-[10px] font-black text-brand-green uppercase tracking-widest mb-1">MÁS DE</p>
-                    <h3 className="font-display font-bold text-5xl md:text-6xl text-brand-green leading-none">400</h3>
-                    <h3 className="font-display font-black text-2xl text-gray-800 leading-none mt-1">RECETAS</h3>
-                  </div>
-                  <div className="w-full h-1/2 p-2 bg-gray-50">
-                    <img 
-                      src="https://images.unsplash.com/photo-1512621776951-a57141f2eefd?auto=format&fit=crop&w=400&q=80" 
-                      className="w-full h-full object-cover rounded shadow-inner" 
-                      alt="Recetas" 
-                      referrerPolicy="no-referrer"
-                      crossOrigin="anonymous"
-                    />
-                  </div>
-                </div>
-                
-                {/* Book 2 - Menus */}
-                <div className="absolute top-0 left-[-10%] w-[85%] h-[85%] bg-white rounded-r-lg shadow-[25px_25px_80px_rgba(0,0,0,0.25)] border-y border-r border-gray-200 flex flex-col items-center justify-start overflow-hidden transform -rotate-3 hover:translate-x-[-5px] hover:translate-y-[-5px] transition-all duration-500 z-10 origin-bottom-right">
+                {/* Book 2 - Plan de 8 Semanas (New) */}
+                <div className="absolute top-4 left-[-15%] w-[85%] h-[85%] bg-white rounded-r-2xl shadow-[20px_20px_80px_rgba(0,0,0,0.15)] border-y border-r border-gray-100 flex flex-col items-center justify-start overflow-hidden transform -rotate-6 hover:-rotate-3 transition-all duration-500 z-10 origin-bottom-right">
                    <div className="absolute left-0 top-0 w-3 h-full bg-gradient-to-r from-gray-200 to-transparent opacity-30"></div>
-                   <div className="w-full text-center p-6 flex-1 flex flex-col justify-center">
-                    <h3 className="font-display font-black text-4xl text-gray-800 leading-none">MENÚS</h3>
-                    <div className="h-1 w-10 bg-brand-red mx-auto my-3"></div>
-                    <p className="font-black text-brand-green text-xl uppercase tracking-tighter">2 MESES</p>
+                   <div className="w-full text-center p-4 flex-1 flex flex-col justify-center bg-brand-yellow/5">
+                    <p className="text-[6px] font-black text-gray-400 uppercase tracking-[0.2em]">E-BOOK</p>
+                    <h3 className="font-display font-black text-2xl text-gray-800 leading-none uppercase mt-1">PLAN DE <br/>MENÚS</h3>
+                    <div className="h-1 w-8 bg-brand-red mx-auto my-2"></div>
+                    <p className="font-black text-brand-yellow text-[10px] uppercase tracking-widest leading-none">8 SEMANAS</p>
                   </div>
-                  <div className="w-full h-1/2 p-2 relative bg-gray-50">
+                  <div className="w-full h-1/2 p-2 relative bg-gray-50 border-t border-gray-100">
                     <img 
                       src="https://images.unsplash.com/photo-1490645935967-10de6ba17061?auto=format&fit=crop&w=400&q=80" 
                       className="w-full h-full object-cover rounded shadow-inner" 
-                      alt="Menús" 
+                      alt="Plan de Menús" 
                       referrerPolicy="no-referrer"
                       crossOrigin="anonymous"
                     />
@@ -256,8 +276,59 @@ export default function App() {
                   </div>
                 </div>
 
-                {/* Smartphone */}
-                <div className="absolute -bottom-6 -right-4 w-[45%] aspect-[1/2] bg-[#1a1a1a] rounded-[2rem] p-1 shadow-2xl z-20 transform rotate-12 border-4 border-[#333]">
+                {/* Main Book - Recetas Antiinflamatorias */}
+                <div className="absolute top-0 right-[-5%] w-[90%] h-full bg-white rounded-r-2xl shadow-[30px_30px_100px_rgba(34,139,34,0.15)] border-y border-r border-gray-100 flex flex-col items-center justify-start overflow-hidden transform group-hover:scale-[1.02] transition-all duration-700 z-20">
+                  <div className="absolute left-0 top-0 w-6 h-full bg-gradient-to-r from-gray-200 to-transparent opacity-40"></div>
+                  
+                  {/* Cover Header */}
+                  <div className="w-full text-center p-6 pb-2">
+                    <p className="text-[8px] font-black text-gray-400 uppercase tracking-[0.3em] mb-1">TRANSFORMA</p>
+                    <h3 className="font-display font-black text-3xl text-brand-green leading-none tracking-tighter">TU SALUD</h3>
+                    <p className="text-[10px] font-script italic text-gray-400 my-1">con nuestras</p>
+                    <h4 className="font-display font-black text-xl text-gray-800 leading-tight">RECETAS</h4>
+                    <div className="bg-brand-green text-white text-[10px] font-black py-1 px-2 rounded-sm inline-block mx-auto mt-1 uppercase tracking-widest">ANTIINFLAMATORIAS</div>
+                  </div>
+
+                  {/* Main Cover Image */}
+                  <div className="w-full h-1/2 p-4 relative">
+                    <div className="absolute top-2 right-2 w-14 h-14 bg-brand-yellow rounded-full border-4 border-white shadow-lg flex flex-col items-center justify-center text-white z-30">
+                      <span className="text-[6px] font-black">MÁS DE</span>
+                      <span className="text-sm font-black leading-none">+400</span>
+                      <span className="text-[5px] font-black leading-none">RECETAS</span>
+                    </div>
+                    <img 
+                      src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?auto=format&fit=crop&w=400&q=80" 
+                      className="w-full h-full object-cover rounded-xl shadow-inner border border-gray-50" 
+                      alt="Recetas Saludables" 
+                      referrerPolicy="no-referrer"
+                      crossOrigin="anonymous"
+                    />
+                  </div>
+
+                  {/* Cover Footer Icons */}
+                  <div className="w-full px-6 py-4 space-y-2 mt-auto bg-gray-50/50">
+                    {[
+                      { icon: <Check className="w-3 h-3 text-brand-green" />, text: "MENOS DOLOR" },
+                      { icon: <Zap className="w-3 h-3 text-brand-green" />, text: "MÁS ENERGÍA" },
+                      { icon: <ShieldCheck className="w-3 h-3 text-brand-green" />, text: "SISTEMA INMUNE" }
+                    ].map((li, i) => (
+                      <div key={i} className="flex items-center gap-2">
+                        <div className="w-4 h-4 rounded-full border border-brand-green flex items-center justify-center">
+                          {li.icon}
+                        </div>
+                        <span className="text-[7px] font-black text-gray-600 uppercase tracking-widest">{li.text}</span>
+                      </div>
+                    ))}
+                  </div>
+
+                  {/* Bottom Footer Band */}
+                  <div className="w-full bg-brand-green py-2 text-[6px] text-white font-black text-center uppercase tracking-widest mt-auto">
+                    LISTA DE COMPRAS • INSTRUCCIONES • INGREDIENTES
+                  </div>
+                </div>
+                
+                {/* Smartphone Overlapped */}
+                <div className="absolute -bottom-10 -right-8 w-[55%] aspect-[1/2] bg-[#1a1a1a] rounded-[2.5rem] p-1.5 shadow-[0_40px_80px_-15px_rgba(0,0,0,0.5)] z-30 transform rotate-[15deg] transition-transform group-hover:rotate-[8deg] duration-500 border-4 border-[#333]">
                   <div className="w-full h-full bg-white rounded-[1.8rem] overflow-hidden relative">
                     <img 
                       src="https://images.unsplash.com/photo-1466637574441-749b8f19452f?auto=format&fit=crop&w=300&q=80" 
@@ -266,8 +337,13 @@ export default function App() {
                       referrerPolicy="no-referrer"
                       crossOrigin="anonymous"
                     />
-                    <div className="absolute inset-0 bg-brand-green/20 flex items-center justify-center">
-                       <p className="text-[8px] font-black text-white uppercase text-center bg-brand-green py-1 px-2 rounded-full rotate-[-15deg] shadow-lg">Digital</p>
+                    <div className="absolute inset-0 bg-brand-green/40 flex flex-col items-center justify-center p-4">
+                       <div className="bg-white p-2 rounded-lg shadow-xl scale-[0.6] origin-center">
+                          <p className="text-[6px] font-black text-gray-400 uppercase tracking-[0.3em] mb-1">TRANSFORMA</p>
+                          <h4 className="font-display font-black text-xl text-brand-green tracking-tighter">TU SALUD</h4>
+                          <div className="bg-brand-green text-white text-[8px] font-black py-0.5 px-2 mt-1">ANTIINFLAMATORIA</div>
+                       </div>
+                       <p className="text-[8px] font-black text-white uppercase text-center bg-brand-red py-1 px-4 rounded-full mt-2 shadow-lg tracking-widest">Digital</p>
                     </div>
                   </div>
                 </div>
@@ -383,53 +459,6 @@ export default function App() {
         </div>
       </section>
 
-      {/* BONUSES SECTION */}
-      <section className="py-20 px-4 bg-brand-red">
-        <div className="max-w-5xl mx-auto">
-          <div className="text-center mb-16 text-white">
-            <h2 className="font-display font-bold text-4xl md:text-6xl mb-4">
-              🎁 ¡REGALOS EXCLUSIVOS!
-            </h2>
-            <p className="text-xl opacity-90 font-medium">Si compras el Pack Completo hoy, te llevas esto GRATIS:</p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {[
-              { 
-                title: "Guía de Snacks Saludables", 
-                val: "$12,00", 
-                img: "https://images.unsplash.com/photo-1543339308-43e59d6b73a6?auto=format&fit=crop&w=400&q=80" 
-              },
-              { 
-                title: "Plan de Salsas Sin Azúcar", 
-                val: "$15,00", 
-                img: "https://images.unsplash.com/photo-1472476443507-c7a5948772fc?auto=format&fit=crop&w=400&q=80" 
-              },
-              { 
-                title: "Masterclass: Desinflámate", 
-                val: "$29,00", 
-                img: "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?auto=format&fit=crop&w=400&q=80" 
-              }
-            ].map((bonus, i) => (
-              <div key={i} className="bg-white rounded-3xl p-2 shadow-2xl transform hover:scale-105 transition-transform duration-300">
-                <div className="aspect-square rounded-2xl overflow-hidden relative">
-                   <img src={bonus.img} alt={bonus.title} className="w-full h-full object-cover" referrerPolicy="no-referrer" />
-                   <div className="absolute top-4 right-4 bg-brand-red text-white font-bold py-1 px-3 rounded-full text-xs shadow-lg">GRATIS</div>
-                </div>
-                <div className="p-6 text-center">
-                   <h3 className="font-black text-gray-800 text-lg uppercase leading-tight mb-2">{bonus.title}</h3>
-                   <p className="text-brand-red font-bold text-sm line-through opacity-40">Valorado en {bonus.val}</p>
-                </div>
-              </div>
-            ))}
-          </div>
-
-          <div className="mt-12 text-center text-white/80 font-bold uppercase tracking-widest text-sm bg-black/10 py-4 px-8 rounded-full inline-block mx-auto">
-             Valor Total de Bonos: $56,00 <span className="text-white">— Hoy: $0,00</span>
-          </div>
-        </div>
-      </section>
-
       {/* DETAILED INFO SECTION */}
       <section className="bg-white py-20 px-4">
         <div className="max-w-5xl mx-auto">
@@ -443,41 +472,68 @@ export default function App() {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-20">
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-20">
             {[
-              { icon: <BookOpen className="w-8 h-8 text-brand-green" />, title: "+400 Recetas Exclusivas", text: "Variedad increíble de platos deliciosos." },
-              { icon: <Sparkles className="w-8 h-8 text-brand-yellow" />, title: "Ingredientes Clave", text: "Seleccionados por su poder antiinflamatorio." },
-              { icon: <Flame className="w-8 h-8 text-brand-red" />, title: "Especias Poderosas", text: "Domina el uso de cúrcuma, jengibre y más." }
+              { icon: <Calendar className="w-8 h-8 text-brand-green" />, title: "Plan de 8 Semanas", text: "Menús antiinflamatorios y equilibrados para transformar tus hábitos." },
+              { icon: <ShoppingBag className="w-8 h-8 text-brand-green" />, title: "Lista de Compras", text: "Completa y organizada por categorías para ahorrar tiempo." },
+              { icon: <BookOpen className="w-8 h-8 text-brand-green" />, title: "Instrucciones Claras", text: "Pasos fáciles de seguir para resultados perfectos." },
+              { icon: <Sparkles className="w-8 h-8 text-brand-yellow" />, title: "Ingredientes Naturales", text: "Poderosos alimentos seleccionados para tu salud." }
             ].map((feature, i) => (
               <div key={i} className="p-8 rounded-2xl border border-gray-100 bg-brand-bg/30 hover:bg-white hover:shadow-xl transition-all duration-300">
                 <div className="mb-4">{feature.icon}</div>
                 <h3 className="font-bold text-xl text-gray-800 mb-2">{feature.title}</h3>
-                <p className="text-gray-600">{feature.text}</p>
+                <p className="text-gray-600 text-sm">{feature.text}</p>
               </div>
             ))}
           </div>
 
-          <div className="bg-brand-green/[0.03] rounded-[3rem] p-8 md:p-16 border border-brand-green/10">
-            <div className="flex flex-col md:flex-row gap-12 items-center">
-              <div className="flex-1">
-                <h3 className="font-display font-bold text-3xl text-gray-800 mb-8">Beneficios:</h3>
-                <ul className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                  {["Menos dolor", "Más energía", "Mejor digestión", "Piel sana"].map((b, i) => (
-                    <li key={i} className="flex items-center gap-3 bg-white p-4 rounded-xl shadow-sm">
-                      <Check className="w-5 h-5 text-brand-green" />
-                      <span className="font-bold text-gray-700">{b}</span>
-                    </li>
+          <div className="bg-brand-green/[0.03] rounded-[3rem] p-8 md:p-16 border border-brand-green/10 relative overflow-hidden">
+            <div className="absolute top-0 right-0 w-64 h-64 bg-brand-green/5 rounded-full -mr-32 -mt-32 blur-3xl"></div>
+            <div className="flex flex-col md:flex-row gap-12 items-center relative z-10">
+              <div className="flex-1 space-y-6">
+                <div className="inline-block bg-brand-green text-white text-[10px] font-black px-4 py-1.5 rounded-full uppercase tracking-[0.2em]">
+                  Enfoque en Resultados
+                </div>
+                <h3 className="font-display font-bold text-3xl md:text-5xl text-gray-800 leading-tight">
+                  Tu Hoja de Ruta para <span className="text-brand-green italic">Desinflamarte</span>
+                </h3>
+                <p className="text-xl text-gray-700 leading-relaxed font-black">
+                  Plan completo de 8 semanas con menús antiinflamatorios, recetas saludables y comidas equilibradas para ayudarte a reducir la inflamación, mejorar tu energía y transformar tu alimentación.
+                </p>
+                <p className="text-lg text-gray-500 leading-relaxed italic border-l-4 border-brand-yellow pl-6">
+                  Incluye opciones prácticas, nutritivas y fáciles de preparar para crear hábitos saludables, fortalecer tu bienestar y disfrutar de una vida más ligera, saludable y llena de vitalidad cada día.
+                </p>
+                
+                <div className="flex flex-wrap gap-3 pt-4">
+                  {[
+                    { icon: <Check className="w-4 h-4" />, text: "Menús Semanales" },
+                    { icon: <Check className="w-4 h-4" />, text: "Comidas Equilibradas" },
+                    { icon: <Check className="w-4 h-4" />, text: "Sin Improvisación" },
+                    { icon: <Check className="w-4 h-4" />, text: "Hábitos Reales" }
+                  ].map((feat, i) => (
+                    <div key={i} className="flex items-center gap-2 bg-white/50 backdrop-blur-sm border border-gray-100 px-4 py-2 rounded-xl shadow-sm">
+                      <div className="text-brand-green">{feat.icon}</div>
+                      <span className="text-[10px] font-black text-gray-700 uppercase tracking-widest">{feat.text}</span>
+                    </div>
                   ))}
-                </ul>
+                </div>
               </div>
-              <div className="w-full md:w-1/3 aspect-square rounded-3xl overflow-hidden shadow-2xl rotate-3 bg-gray-100">
-                <img 
-                  src="https://images.unsplash.com/photo-1543339308-43e59d6b73a6?auto=format&fit=crop&w=800&q=80" 
-                  className="w-full h-full object-cover" 
-                  alt="Comida Saludable" 
-                  referrerPolicy="no-referrer"
-                  crossOrigin="anonymous"
-                />
+              
+              <div className="w-full md:w-1/3 group">
+                <div className="aspect-[3/4] bg-white rounded-3xl shadow-2xl overflow-hidden border-[12px] border-white ring-1 ring-gray-100 transform rotate-3 group-hover:rotate-0 transition-transform duration-500 relative">
+                  <img 
+                    src="https://images.unsplash.com/photo-1490645935967-10de6ba17061?auto=format&fit=crop&w=600&q=80" 
+                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" 
+                    alt="Plan de menús" 
+                    referrerPolicy="no-referrer"
+                    crossOrigin="anonymous"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent flex flex-col items-center justify-end p-8 text-white">
+                    <p className="text-[10px] font-black uppercase tracking-widest mb-1 opacity-80">Incluido en el Pack</p>
+                    <p className="font-display font-black text-4xl leading-none">8 SEMANAS</p>
+                    <p className="text-[8px] font-black uppercase tracking-widest mt-2 border-t border-white/30 pt-2">Plan de Transformación</p>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -557,10 +613,15 @@ export default function App() {
                   </li>
                 ))}
               </ul>
-              <button className="w-full bg-gray-800 hover:bg-black text-white py-4 rounded-xl font-black transition-all flex items-center justify-center gap-2">
+              <a 
+                href="https://pay.hotmart.com/B105826536U"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-full bg-gray-800 hover:bg-black text-white py-4 rounded-xl font-black transition-all flex items-center justify-center gap-2"
+              >
                 <span>COMPRAR RECETAS</span>
                 <ArrowRight className="w-4 h-4" />
-              </button>
+              </a>
             </div>
 
             {/* Pack Completo */}
@@ -572,18 +633,23 @@ export default function App() {
                 <span className="text-6xl">14,90</span>
               </div>
               <ul className="space-y-4 mb-10 flex-1">
-                {["+400 Recetas", "2 MESES DE MENÚS", "LISTAS DE COMPRA", "TODOS LOS BONOS GRATIS", "Sistema Completo"].map((t, i) => (
+                {["+400 Recetas", "PLAN DE MENÚS (8 SEMANAS)"].map((t, i) => (
                   <li key={i} className="flex items-center gap-3 text-gray-800">
                     <CheckCircle2 className="w-5 h-5 text-brand-green" />
-                    <span className={`font-black text-sm uppercase tracking-wide ${t === "TODOS LOS BONOS GRATIS" ? "text-brand-red animate-pulse" : ""}`}>{t}</span>
+                    <span className="font-black text-sm uppercase tracking-wide">{t}</span>
                   </li>
                 ))}
               </ul>
-              <button className="w-full bg-brand-red hover:bg-[#B32D25] text-white py-5 rounded-xl font-black shadow-lg transition-all flex items-center justify-center gap-2 group relative overflow-hidden">
+              <a 
+                href="https://pay.hotmart.com/K105829709J"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-full bg-brand-red hover:bg-[#B32D25] text-white py-5 rounded-xl font-black shadow-lg transition-all flex items-center justify-center gap-2 group relative overflow-hidden"
+              >
                 <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000"></div>
                 <span className="relative z-10 text-xl uppercase tracking-tighter">SÍ, QUIERO EL PACK COMPLETO</span>
                 <ArrowRight className="w-5 h-5 relative z-10 transition-transform group-hover:translate-x-1" />
-              </button>
+              </a>
             </div>
 
           </div>
@@ -596,7 +662,7 @@ export default function App() {
           {[
             { icon: <HeartPulse className="w-8 h-8 text-brand-green" />, text: "Menos Inflamación" },
             { icon: <BatteryCharging className="w-8 h-8 text-brand-green" />, text: "Más Energía" },
-            { icon: <Clock className="w-8 h-8 text-brand-red" />, text: "Ahorra Tiempo" },
+            { icon: <ShieldCheck className="w-8 h-8 text-brand-red" />, text: "Sistema Inmune" },
             { icon: <Smile className="w-8 h-8 text-brand-green" />, text: "Resultados Reales" }
           ].map((b, i) => (
             <div key={i} className="flex flex-col items-center gap-3">
